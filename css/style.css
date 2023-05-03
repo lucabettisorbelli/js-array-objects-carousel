@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.content {
+    width: 50%;
+    height: 50vh;
+    margin: 0 auto;
+}
+
+.box1 {
+    width: 80%;
+}
+
+.box2 {
+    width: 20%;
+}
