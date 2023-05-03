@@ -28,41 +28,41 @@ let thumbBox = document.createElement("div");
 thumbBox.classList.add("thumbBox");
 box2.appendChild(thumbBox);
 
-for (let i = 0; i < images.length; i++) {
+images.forEach((elemento, indice) => {
     // Crea un div per contenere l'immagine, il titolo e il testo
     let slide = document.createElement("div");
     slide.classList.add("slide");
     // Nascondi tutte le slide tranne la prima
-    if (i > 0) {
+    if (indice > 0) {
         slide.classList.add("hidden");
     }
     box1.appendChild(slide);
 
     // Crea l'immagine
     let img = document.createElement("img");
-    img.src = `./${images[i].image}`;
+    img.src = `./${elemento.image}`;
     slide.appendChild(img);
 
     // Crea il titolo
     let title = document.createElement("h2");
-    title.textContent = images[i].title;
+    title.textContent = elemento.title;
     slide.appendChild(title);
 
     // Crea il testo
     let text = document.createElement("p");
-    text.textContent = images[i].text;
+    text.textContent = elemento.text;
     slide.appendChild(text);
 
     // Crea la miniatura
     let thumb = document.createElement("img");
-    thumb.src = images[i].image;
+    thumb.src = elemento.image;
     thumb.classList.add("thumb");
     // Attiva l'opacità e il bordo per la prima miniatura
-    if (i == 0) {
+    if (indice == 0) {
         thumb.classList.add("activeThumb");
     }
     thumbBox.appendChild(thumb);
-}
+});
 
 
 let slides = document.getElementsByClassName("slide");
