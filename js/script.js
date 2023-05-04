@@ -1,7 +1,7 @@
 const images = [
     {
         image: 'img/01.webp',
-        title: 'Marvel\'s Spiderman Miles Morale',
+        title: 'Marvel\'s Spiderman Miles Morales',
         text: 'Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.',
     }, {
         image: 'img/02.webp',
@@ -133,6 +133,54 @@ btnNext.addEventListener("click", function () {
         }
         i++;
     }
-})
+});
 
+
+const btnStart = document.getElementById("btnStart");
+const btnStop = document.getElementById("btnStop");
+
+let autoplay;
+let isAutoplayOn = false;
+
+btnStart.addEventListener("click", function () {
+    if (!isAutoplayOn) {
+        autoplay = setInterval(function () {
+            if (immagineCorrente < slides.length - 1) {
+                immagineCorrente++;
+            } else {
+                immagineCorrente = 0;
+            }
+
+            for (let i = 0; i < slides.length; i++) {
+                const slide = slides[i];
+
+                if (i == immagineCorrente) {
+                    slide.classList.remove("hidden");
+                } else {
+                    slide.classList.add("hidden");
+                }
+            }
+
+            let i = 0;
+            while (i < thumbs.length) {
+                const thumb = thumbs[i];
+
+                if (i == immagineCorrente) {
+                    thumb.classList.add("activeThumb");
+                } else {
+                    thumb.classList.remove("activeThumb");
+                }
+                i++;
+            }
+        }, 3000);
+        isAutoplayOn = true;
+    }
+});
+
+btnStop.addEventListener("click", function () {
+    if (isAutoplayOn) {
+        clearInterval(autoplay);
+        isAutoplayOn = false;
+    }
+});
 
